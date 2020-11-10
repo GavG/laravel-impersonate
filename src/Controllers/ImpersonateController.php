@@ -39,7 +39,7 @@ class ImpersonateController extends Controller
 
         // Cannot impersonate again if you're already impersonate a user
         if ($this->manager->isImpersonating()) {
-            abort(403);
+            $this->manager->leave();
         }
 
         if (!$request->user()->canImpersonate()) {
